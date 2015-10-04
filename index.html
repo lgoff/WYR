@@ -1,0 +1,255 @@
+<!--Lindsay Goff-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Would You Rather...?</title>
+
+	<style type="text/css">
+	/*style the computer text, input, and button*/
+	</style>
+</head>
+<body>
+<h1>Would You Rather...</h1>
+<p id = "computer">...have a rewind or pause button on your life?</p>
+<input id = "human" type = "text" placeholder = "Your Response">
+<button>Enter</button>
+
+<script type="text/javascript">
+//your script here
+//There are three common methods to gain access (control) of markup elements
+//We have used querySelector
+
+var computer = document.querySelector('#computer');
+//without modifying the markup finish the next 2 var statements	
+var human = document.getElementById('human');
+var button = document.getElementsByTagName('button')[0];
+
+//other vars we will use in the next step
+var responseNumber;//used to store the value of the response to display to the player
+var newResponse;//used to generate the next response and prevent duplication of responses
+var humanMsg = "";//will hold the text (value) of the player input
+var computerMsg = "";//will hold the computer text displayed to the player each turn
+
+//new//
+var questionTrack = "start";
+
+// var genericResponses = [
+// 	"Good for you.",
+// 	"You are a loser.",
+// 	"I like you."
+// ];
+//will be populated with messages to respond to the player
+
+//make the human input the focus when the page loads
+human.focus();
+
+button.addEventListener("click",clickHandler,false);
+
+function clickHandler(){
+	playGame();
+}
+
+window.addEventListener("keydown",keydownHandler,false);
+
+function keydownHandler(event){
+	if (event.keyCode===13) {
+		playGame();
+	}
+}
+
+function playGame() {
+	//let the games begin
+
+	// //version4
+	// humanMsg = (human.value).toLowerCase();
+	// if (humanMsg.indexOf("good") !== -1){
+	// 	computerMsg = "That is good for you.";
+	// }else if (humanMsg.indexOf("bad") !== -1){
+	// 	computerMsg = "You live a sad life.";
+	// }else {
+	// 	computerMsg = "You know nothing.";
+	// }
+	// computer.innerHTML = computerMsg;
+
+
+// //version5
+	//switch questionTrack (gameState type thing)
+	humanMsg = (human.value).toLowerCase();
+	switch (questionTrack) {
+		case "start":
+		buttonAnalysis();
+		break;
+
+		case "language":
+		languageAnalysis();
+		break;
+
+		case "superhero":
+		superheroAnalysis();
+		break;
+
+		case "explore":
+		exploreAnalysis();
+		break;
+
+		case "news":
+		newsAnalysis();
+		break;
+
+		case "vaca":
+		vacaAnalysis();
+		break;
+				
+		case "control":
+		controlAnalysis();
+		break;	
+
+		case "horrible":
+		horribleAnalysis();
+		break;
+
+		case "eat":
+		eatAnalysis();
+		break;
+
+		case "end":
+		endAnalysis();
+		break;
+
+		// default:
+		// genericResponse();
+		// break;
+
+	}
+	computer.innerHTML = computerMsg;
+	////////////////////////
+	//3. wipe the text in the player input field 
+	human.value = "";
+
+}
+
+function buttonAnalysis(){
+	if (humanMsg.indexOf("rewind") !== -1){
+		computerMsg = "...talk with animals or speak all foreign languages?";
+		questionTrack = "language";
+	}else (humanMsg.indexOf("pause") !== -1){
+		computerMsg = "...talk with animals or speak all foreign languages?";
+		questionTrack = "language";
+	}
+}
+
+function languageAnalysis(){
+	if (humanMsg.indexOf("animals") !== -1){
+		computerMsg = "..be batman or spiderman?";
+		questionTrack = "superhero";
+	}else (humanMsg.indexOf("foreign") !== -1){
+		computerMsg = "..be batman or spiderman?";
+		questionTrack = "superhero";
+	}
+}
+
+function superheroAnalysis(){
+	if (humanMsg.indexOf("batman") !== -1){
+		computerMsg = "...explore space or the ocean?";
+		questionTrack = "explore";
+	}else (humanMsg.indexOf("spiderman") !== -1){
+		computerMsg = "...explore space or the ocean?";
+		questionTrack = "explore";
+	}
+}
+
+function exploreAnalysis(){
+	if (humanMsg.indexOf("space") !== -1){
+		computerMsg = "...receive the good or bad news first?";
+		questionTrack = "news";
+	}else (humanMsg.indexOf("ocean") !== -1){
+		computerMsg = "...receive the good or bad news first?";
+		questionTrack = "news";
+	}
+}
+
+function newsAnalysis(){
+	if (humanMsg.indexOf("good") !== -1){
+		computerMsg = "...vacation on the beach or in the mountains?";
+		questionTrack = "vaca";
+	}else if (humanMsg.indexOf("bad") !== -1){
+		computerMsg = "...vacation on the beach or in the mountains?";
+		questionTrack = "vaca";
+	}
+}
+
+function vacaAnalysis(){
+	if (humanMsg.indexOf("beach") !== -1){
+		computerMsg = "...control space or time?";
+		questionTrack = "control";
+	}else if (humanMsg.indexOf("mountain") !== -1){
+		computerMsg = "...control space or time?";
+		questionTrack = "control";
+	}
+}
+
+function controlAnalysis(){
+	if (humanMsg.indexOf("space") !== -1){
+		computerMsg = "...be a horrible dancer or a horrible singer?";
+		questionTrack = "horrible";
+	}else if (humanMsg.indexOf("time") !== -1){
+		computerMsg = "...be a horrible dancer or a horrible singer?";
+		questionTrack = "horrible";
+	}
+}
+
+function horribleAnalysis(){
+	if (humanMsg.indexOf("singer") !== -1){
+		computerMsg = "...never be able to eat meat or never be able to eat vegetables?";
+		questionTrack = "eat";
+	}else if (humanMsg.indexOf("dancer") !== -1){
+		computerMsg = "...never be able to eat meat or never be able to eat vegetables?";
+		questionTrack = "eat";
+	}
+}
+
+function eatAnalysis(){
+	if (humanMsg.indexOf("meat") !== -1){
+		computerMsg = "...live without the internet or live without AC and heating?";
+		questionTrack = "live";
+	}else if (humanMsg.indexOf("vegetables") !== -1){
+		computerMsg = "...live without the internet or live without AC and heating?";
+		questionTrack = "live";
+	}
+}
+
+function liveAnalysis(){
+	if (humanMsg.indexOf("internet") !== -1){
+		computerMsg = "...visit Hogwarts or Narnia?";
+		questionTrack = "end";
+	}else if (humanMsg.indexOf("ac") !== -1){
+		computerMsg = "...visit Hogwarts or Narnia?";
+		questionTrack = "end";
+	}
+}
+
+function endResponse(){
+		// //version3
+	if (humanMsg.indexOf("hogwarts") !== -1){
+		computerMsg = "You’re my kind of person, lets be friends!";
+		human.className="displayNone";
+		button.className="displayNone";
+		setTimeout(endGame,2000);
+	}else if (humanMsg.indexOf("narnia") !== -1){
+		computerMsg = "Wrong answer, see you later!";
+		human.className="displayNone";
+		button.className="displayNone";
+		setTimeout(endGame,2000);
+	}
+}
+
+function endGame(){
+	////.assign() leaves the back button working
+	////.replace() disables the back button by replacing the location in the history
+	location.assign("http://buzzfeed.com/danieldalton/griffin-door#.yeRolMaaea");
+}
+</script>
+
+</body>
+</html>
