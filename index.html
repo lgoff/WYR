@@ -112,7 +112,7 @@ function playGame() {
 		case "eat":
 		eatAnalysis();
 		break;
-
+		
 		case "live":
 		liveAnalysis();
 		break;
@@ -134,127 +134,69 @@ function playGame() {
 }
 
 function buttonAnalysis(){
-	if (humanMsg.indexOf("rewind") !== -1){
 		computerMsg = "...talk with animals or speak all foreign languages?";
 		questionTrack = "language";
-	// }else (humanMsg.indexOf("pause") !== -1){
-	}else {
-		computerMsg = "...talk with animals or speak all foreign languages?";
-		questionTrack = "language";
-	}
 }
 
 function languageAnalysis(){
-	if (humanMsg.indexOf("animals") !== -1){
-		computerMsg = "..be batman or spiderman?";
-		questionTrack = "superhero";
-	// }else (humanMsg.indexOf("foreign") !== -1){
-	}else {
 		computerMsg = "..be batman or spiderman?";
 		questionTrack = "superhero";
 	}
-}
+
 
 function superheroAnalysis(){
-	if (humanMsg.indexOf("batman") !== -1){
 		computerMsg = "...explore space or the ocean?";
 		questionTrack = "explore";
-	// }else (humanMsg.indexOf("spiderman") !== -1){
-		}else {
-		computerMsg = "...explore space or the ocean?";
-		questionTrack = "explore";
-	}
 }
 
 function exploreAnalysis(){
-	if (humanMsg.indexOf("space") !== -1){
-		computerMsg = "...receive the good or bad news first?";
-		questionTrack = "news";
-	// }else (humanMsg.indexOf("ocean") !== -1){
-		}else {
 		computerMsg = "...receive the good or bad news first?";
 		questionTrack = "news";
 	}
-}
 
 function newsAnalysis(){
-	if (humanMsg.indexOf("good") !== -1){
-		computerMsg = "...vacation on the beach or in the mountains?";
-		questionTrack = "vaca";
-	// }else if (humanMsg.indexOf("bad") !== -1){
-		}else {
 		computerMsg = "...vacation on the beach or in the mountains?";
 		questionTrack = "vaca";
 	}
-}
+
 
 function vacaAnalysis(){
-	if (humanMsg.indexOf("beach") !== -1){
-		computerMsg = "...control space or time?";
-		questionTrack = "control";
-	// }else if (humanMsg.indexOf("mountain") !== -1){
-		}else {
 		computerMsg = "...control space or time?";
 		questionTrack = "control";
 	}
-}
 
 function controlAnalysis(){
-	if (humanMsg.indexOf("space") !== -1){
-		computerMsg = "...be a horrible dancer or a horrible singer?";
-		questionTrack = "horrible";
-	// }else if (humanMsg.indexOf("time") !== -1){
-		}else {
 		computerMsg = "...be a horrible dancer or a horrible singer?";
 		questionTrack = "horrible";
 	}
-}
 
 function horribleAnalysis(){
-	if (humanMsg.indexOf("singer") !== -1){
-		computerMsg = "...never be able to eat meat or never be able to eat vegetables?";
-		questionTrack = "eat";
-	// }else if (humanMsg.indexOf("dancer") !== -1){
-		}else {
 		computerMsg = "...never be able to eat meat or never be able to eat vegetables?";
 		questionTrack = "eat";
 	}
-}
 
 function eatAnalysis(){
-	if (humanMsg.indexOf("meat") !== -1){
-		computerMsg = "...live without the internet or live without AC and heating?";
-		questionTrack = "live";
-	// }else if (humanMsg.indexOf("vegetables") !== -1){
-		}else {
 		computerMsg = "...live without the internet or live without AC and heating?";
 		questionTrack = "live";
 	}
-}
 
 function liveAnalysis(){
-	if (humanMsg.indexOf("internet") !== -1){
-		computerMsg = "...visit Hogwarts or Narnia?";
-		questionTrack = "end";
-	// }else if (humanMsg.indexOf("ac") !== -1){
-		}else {
 		computerMsg = "...visit Hogwarts or Narnia?";
 		questionTrack = "end";
 	}
-}
 
 function endResponse(){
 		// //version3
-	if (humanMsg.indexOf("hogwart") !== -1){
+	if (humanMsg.indexOf("hogwarts") !== -1){
 		computerMsg = "You&#39;re my kind of person, lets be friends!";
 		human.className="displayNone";
 		button.className="displayNone";
-		setTimeout(endGame,1000);
+		setTimeout(endGame,1200);
 	}else if (humanMsg.indexOf("narnia") !== -1){
 		computerMsg = "Wrong answer, see you later!";
 		human.className="displayNone";
 		button.className="displayNone";
-		setTimeout(endGame,1000);
+		setTimeout(endGame,1200);
 	}
 }
 
